@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: add
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        prod: socra
+        app: add
+    spec:
+      containers:
+      - name: service
+        image: socra-add:latest
+        imagePullPolicy: Never
+        ports:
+        - name: http
+          containerPort: 8080
+        securityContext:
+          readOnlyRootFilesystem: true
