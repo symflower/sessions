@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-database
+data:
+  DB_HOST: "db"
+  DB_NAME: "iaam5"
+  DB_USER: "iaam5"
+  DB_PASS: "somepassword" # DO NOT USE CLEAR TEXT PASSWORDS! Usually this should be *at least* encrypted. Best practice is to use a "secret server" for user accounts.
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: db
+spec:
+  template:
+    metadata:
+      labels:
+        product: iaam5
+        service: db
+    spec:
+      containers:
+      - name: service
+        image: sameersbn/postgresql:9.6
+        ports:
+        - name: db
+          containerPort: 5432
+        readinessProbe:
+          exec:
+            command:
+              - pg_isready
+              - --user
+              - postgres
+        envFrom:
+          - configMapRef:
+              name: env-database
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+spec:
+  selector:
+    service: db
+  ports:
+  - name: db
+    port: 5432
