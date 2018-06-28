@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  # replicas: 5
+  template:
+    metadata:
+      labels:
+        product: iaam5
+        service: app
+    spec:
+      containers:
+      - name: service
+        image: symflower/iaam5:app-db
+        ports:
+        - name: http
+          containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: env-database
