@@ -1,5 +1,7 @@
 # Intro
 
+The slides of this workshop can be found in [IaaM5-Kubernetes-Slides.pdf](./IaaM5-Kubernetes-Slides.pdf) and the precompiled Docker images can be found in [this Docker registry](https://hub.docker.com/r/symflower/iaam5/tags/).
+
 You need:
 - A working Kubernetes cluster to deploy our application.
 - Your kubectl command should be able to interact with that cluster.
@@ -20,8 +22,7 @@ There is an extensive documentation for the API we will use online https://kuber
 - The application has two HTTP request handlers "GET /" to receive all timestamps and their IDs as well as "POST /add" to add a new entry.
 - The "GET /" handler is very slow (it always takes at least 5 seconds!) and so we want to scale the application.
 - The application should be deployed using Kubernetes so that we can scale it to more instances.
-- If we can scale we also want to use an external
-- We want to deploy this
+- If we can scale we also want to migrate to an external database.
 
 # Steps
 
@@ -58,7 +59,7 @@ Let's make the deployment available from the outside:
 - `(time curl http://$IP:$PORT/ &); (time curl http://$IP:$PORT/ &); (time curl http://$IP:$PORT/)` Query the service three times at once.
 
 Let's scale our service:
-- Edit our deployment YAML file. Uncomment the "replicas" line. The value of it tell Kubernetes how many instances we want to have of our pod.
+- Edit our deployment YAML file. Uncomment the "replicas" line. The value of it tells Kubernetes how many instances we want to have of our pod.
 - Apply the configuration again. Kubernetes will only transfer and execute the changes.
 - `watch kubectl get pods` Have a look how these pods are started by Kubernetes.
 - `kubectl delete pod $POD_NAME` We can even delete one of the pods and Kubernetes just starts new pods until we reach our requested instance number.
@@ -70,7 +71,7 @@ We have successfully deployed our old application in Kubernetes and scaled it bu
 
 # Deploy an external database (./iaam5-db)
 
-- ./iaam5-db/db.yml holds the YAML definition for our Kubernetes deployment of the database. As you can see we make the server available with the port 5432. We are also using a ConfigMap to configure the initialize the database and we can use this config map to later configure the application. There is alos a readiness probe in our container definition which tells Kubernetes that the container is ready to be accessed. Since we do not want to access the database from outside of our cluster we do not expose the service to the outside but keep an internal service which is also defined in the same file.
+- ./iaam5-db/db.yml holds the YAML definition for our Kubernetes deployment of the database. As you can see we make the server available with the port 5432. We are also using a ConfigMap to configure the database and we can use this ConfigMap to later configure the application. There is also a readiness probe in our container definition which tells Kubernetes that the container is ready to be accessed. Since we do not want to access the database from outside of our cluster we do not expose the service to the outside but keep an internal service which is also defined in the same file.
 
 Let's deploy, use and debug our database:
 - `kubectl apply -f db.yml` Deploy our ConfigMap, our database deployment and our database service.
