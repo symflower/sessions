@@ -1,5 +1,7 @@
 # Intro
 
+The slides of this workshop can be found in [IaaM5-Kubernetes-Slides.pdf](./IaaM5-Kubernetes-Slides.pdf).
+
 You need:
 - A working Kubernetes cluster to deploy our application.
 - Your kubectl command should be able to interact with that cluster.
