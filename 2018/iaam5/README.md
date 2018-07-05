@@ -1,6 +1,6 @@
 # Intro
 
-The slides of this workshop can be found in [IaaM5-Kubernetes-Slides.pdf](./IaaM5-Kubernetes-Slides.pdf).
+The slides of this workshop can be found in [IaaM5-Kubernetes-Slides.pdf](./IaaM5-Kubernetes-Slides.pdf) and the precompiled Docker images can be found in [this Docker registry](https://hub.docker.com/r/symflower/iaam5/tags/).
 
 You need:
 - A working Kubernetes cluster to deploy our application.
