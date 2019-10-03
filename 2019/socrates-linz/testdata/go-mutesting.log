@@ -1,0 +1,689 @@
+# go-mutesting --verbose --exec scripts/exec-mutation.sh github.com/symflower/sessions/2019/socrates-linz/comments/...
+Enable mutator "branch/case"
+Enable mutator "branch/else"
+Enable mutator "branch/if"
+Enable mutator "expression/comparison"
+Enable mutator "expression/remove"
+Enable mutator "statement/remove"
+Save mutations into "/tmp/go-mutesting-145288687"
+Mutate "/go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go"
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.0     2019-10-02 16:09:09.952785371 +0000
+@@ -16,7 +16,8 @@
+ func main() {
+        db, err := sql.Open("sqlite3", fmt.Sprintf("file:unique%d?mode=memory&cache=shared", time.Now().UnixNano()))
+        if err != nil {
+-               panic(err)
++               _ = err
++
+        }
+
+        err = model.CommentInit(db)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.0" with checksum f1a1017745719201929d1a6bb2d6716c
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.1     2019-10-02 16:09:10.112785693 +0000
+@@ -21,7 +21,8 @@
+
+        err = model.CommentInit(db)
+        if err != nil {
+-               panic(err)
++               _ = err
++
+        }
+        err = model.UserInit(db)
+        if err != nil {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.1" with checksum 873031e08b7db228a6884e38e46fb1ac
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.2     2019-10-02 16:09:10.268786007 +0000
+@@ -25,7 +25,8 @@
+        }
+        err = model.UserInit(db)
+        if err != nil {
+-               panic(err)
++               _ = err
++
+        }
+
+        middleware := func(handler func(db *sql.DB, w http.ResponseWriter, r *http.Request)) func(w http.ResponseWriter, r *http.Request) {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.2" with checksum 5855d4efb24ff97c9c915519d0fbdd43
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.3     2019-10-02 16:09:10.428786329 +0000
+@@ -44,6 +44,7 @@
+        log.Printf("Listening on port 8080")
+        err = http.ListenAndServe(":8080", nil)
+        if err != nil {
+-               panic(err)
++               _ = err
++
+        }
+ }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.3" with checksum d24ebbb38acba0dcc903754e8a488a73
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.4" with checksum f05c833788536dd2604d6fca514edac0
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.5" with checksum 8027844e48c6cbb6c24ef1bfe7e39e35
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.6" with checksum 28d66c14735964df7accba110e67b214
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.7" with checksum c2f5d674b7ba04462627aa96b0ef3ab4
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.8     2019-10-02 16:09:17.136799841 +0000
+@@ -40,8 +40,7 @@
+
+        http.HandleFunc("/", middleware(controller.HandleIndex))
+        http.HandleFunc("/register", middleware(controller.HandleRegister))
+-
+-       log.Printf("Listening on port 8080")
++       _ = log.Printf
+        err = http.ListenAndServe(":8080", nil)
+        if err != nil {
+                panic(err)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.8" with checksum daf8977fb507f31066ed9d04a0552795
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.9" with checksum 2a6bb41ebe1256becf24bf8e562ef57c
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.13    2019-10-02 16:09:18.944803480 +0000
+@@ -30,7 +30,7 @@
+
+        middleware := func(handler func(db *sql.DB, w http.ResponseWriter, r *http.Request)) func(w http.ResponseWriter, r *http.Request) {
+                return func(w http.ResponseWriter, r *http.Request) {
+-                       log.Printf("Request %s with %s", r.URL.Path, r.Method)
++                       _, _, _ = log.Printf, r.URL.Path, r.Method
+
+                        handler(db, w, r)
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.13" with checksum 2068c976bcaea2b8a7735e4ed712edb5
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.14" with checksum 96f7879a7640d5869ca2e14b8d0e5607
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go   2019-10-02 15:48:24.846246973 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.15    2019-10-02 16:09:20.728807074 +0000
+@@ -33,8 +33,7 @@
+                        log.Printf("Request %s with %s", r.URL.Path, r.Method)
+
+                        handler(db, w, r)
+-
+-                       log.Printf("Done")
++                       _ = log.Printf
+                }
+        }
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/main.go.15" with checksum 097e87a4b6e8a3bd87941d425c5e9e75
+Mutate "/go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/css.go"
+Mutate "/go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go"
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+Mutation did not compile
+SKIP "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.0" with checksum cbb56c415f739290abb69666e3a77946
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.1 2019-10-02 16:09:22.780811207 +0000
+@@ -76,7 +76,7 @@
+        data.Form.Message = r.FormValue("message")
+
+        if data.Form.Mail == "" {
+-               data.Form.MailError = "This is a required field."
++               _ = data.Form.MailError
+        }
+
+        if data.Form.Password == "" {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.1" with checksum d783626d3a2bde989647e56d4258e85a
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.2 2019-10-02 16:09:22.952811553 +0000
+@@ -80,7 +80,7 @@
+        }
+
+        if data.Form.Password == "" {
+-               data.Form.PasswordError = "This is a required field."
++               _ = data.Form.PasswordError
+        } else {
+                loggedin, err := model.UserLogin(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.2" with checksum cb232e61e9db481c2c34f05433452102
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.3 2019-10-02 16:09:23.120811891 +0000
+@@ -84,9 +84,8 @@
+        } else {
+                loggedin, err := model.UserLogin(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+-                       http.Error(w, err.Error(), http.StatusInternalServerError)
++                       _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+-                       return
+                } else if !loggedin {
+                        data.Form.PasswordError = "Incorrect login user or password"
+                }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.3" with checksum 4d46fada22293cfb02f8e376c822c062
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.4 2019-10-02 16:09:23.308812270 +0000
+@@ -88,7 +88,7 @@
+
+                        return
+                } else if !loggedin {
+-                       data.Form.PasswordError = "Incorrect login user or password"
++                       _ = data.Form.PasswordError
+                }
+        }
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.4" with checksum fe87860d93cc4e2c12183d1a08cad8b9
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.5 2019-10-02 16:09:23.480812617 +0000
+@@ -93,7 +93,7 @@
+        }
+
+        if data.Form.Message == "" {
+-               data.Form.MessageError = "This is a required field."
++               _ = data.Form.MessageError
+        }
+
+        if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.5" with checksum 9bb0225a22c14e3431eff1416c4f198d
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+Mutation did not compile
+SKIP "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.6" with checksum 6fdcc0329da05485804801b759ac8b07
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.7 2019-10-02 16:09:23.772813205 +0000
+@@ -99,9 +99,8 @@
+        if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
+                err := model.CommentAdd(db, data.Form.Mail, data.Form.Message)
+                if err != nil {
+-                       http.Error(w, err.Error(), http.StatusInternalServerError)
++                       _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+-                       return
+                }
+
+                data.Form.Mail = ""
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.7" with checksum 27455c93244c0dae809839c08c9860d7
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.8 2019-10-02 16:09:23.936813534 +0000
+@@ -112,9 +112,8 @@
+        var err error
+        data.Comments, err = model.CommentAll(db)
+        if err != nil {
+-               http.Error(w, err.Error(), http.StatusInternalServerError)
++               _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+-               return
+        }
+
+        w.WriteHeader(http.StatusOK)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.8" with checksum 78d0442e05336106701f5183039e8c76
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.9 2019-10-02 16:09:24.108813881 +0000
+@@ -120,6 +120,7 @@
+        w.WriteHeader(http.StatusOK)
+        err = templateIndex.Execute(w, data)
+        if err != nil {
+-               panic(err) // If we cannot render the template, the server is unusable.
++               _ = err
++               // If we cannot render the template, the server is unusable.
+        }
+ }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.9" with checksum f38c1a580f3ca8ace4db6b573be3dda2
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.10        2019-10-02 16:09:24.280814227 +0000
+@@ -96,7 +96,7 @@
+                data.Form.MessageError = "This is a required field."
+        }
+
+-       if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
++       if true && data.Form.MessageError == "" {
+                err := model.CommentAdd(db, data.Form.Mail, data.Form.Message)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusInternalServerError)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.10" with checksum f53556a46afba67db36ac4b0291c56a0
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.11        2019-10-02 16:09:24.444814558 +0000
+@@ -96,7 +96,7 @@
+                data.Form.MessageError = "This is a required field."
+        }
+
+-       if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
++       if data.Form.MailError == "" && data.Form.PasswordError == "" && true {
+                err := model.CommentAdd(db, data.Form.Mail, data.Form.Message)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusInternalServerError)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.11" with checksum 8ef6d1e4e385337a45b5db2fd90b020f
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.12        2019-10-02 16:09:24.612814896 +0000
+@@ -96,7 +96,7 @@
+                data.Form.MessageError = "This is a required field."
+        }
+
+-       if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
++       if true && data.Form.PasswordError == "" && data.Form.MessageError == "" {
+                err := model.CommentAdd(db, data.Form.Mail, data.Form.Message)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusInternalServerError)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.12" with checksum 2bc2c66e550c2344a58c972434680db9
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.13        2019-10-02 16:09:24.780815235 +0000
+@@ -96,7 +96,7 @@
+                data.Form.MessageError = "This is a required field."
+        }
+
+-       if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
++       if data.Form.MailError == "" && true && data.Form.MessageError == "" {
+                err := model.CommentAdd(db, data.Form.Mail, data.Form.Message)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusInternalServerError)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.13" with checksum 734bf485a3ff98e0722d09f4205043a4
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.14        2019-10-02 16:09:24.948815573 +0000
+@@ -70,8 +70,7 @@
+
+ func HandleIndex(db *sql.DB, w http.ResponseWriter, r *http.Request) {
+        data := templateIndexData{}
+-
+-       data.Form.Mail = r.FormValue("mail")
++       _, _ = data.Form.Mail, r.FormValue
+        data.Form.Password = r.FormValue("password")
+        data.Form.Message = r.FormValue("message")
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.14" with checksum e60f3d2e18736a2e3cd0eace55bb8b26
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.15        2019-10-02 16:09:25.116815911 +0000
+@@ -72,7 +72,7 @@
+        data := templateIndexData{}
+
+        data.Form.Mail = r.FormValue("mail")
+-       data.Form.Password = r.FormValue("password")
++       _, _ = data.Form.Password, r.FormValue
+        data.Form.Message = r.FormValue("message")
+
+        if data.Form.Mail == "" {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.15" with checksum 98ab30a5b962807336421399f8bae7fb
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.16" with checksum 4f50d3904b439eacac1c9879de02da44
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+Mutation did not compile
+SKIP "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.17" with checksum 7e0fdd88e5704d8d214ee2395104ee5b
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.18        2019-10-02 16:09:27.008819721 +0000
+@@ -116,8 +116,7 @@
+
+                return
+        }
+-
+-       w.WriteHeader(http.StatusOK)
++       _, _ = w.WriteHeader, http.StatusOK
+        err = templateIndex.Execute(w, data)
+        if err != nil {
+                panic(err) // If we cannot render the template, the server is unusable.
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.18" with checksum 54ae543c606685913b1a05ebb7dc22db
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.19" with checksum 0a400d558288f100676012ce5728f068
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.22        2019-10-02 16:09:28.792823314 +0000
+@@ -84,7 +84,7 @@
+        } else {
+                loggedin, err := model.UserLogin(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+-                       http.Error(w, err.Error(), http.StatusInternalServerError)
++                       _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+                        return
+                } else if !loggedin {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.22" with checksum 80493e903649e49ce5208f84fa58d938
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.25        2019-10-02 16:09:28.992823716 +0000
+@@ -103,8 +103,7 @@
+
+                        return
+                }
+-
+-               data.Form.Mail = ""
++               _ = data.Form.Mail
+                data.Form.Password = ""
+                data.Form.Message = ""
+        }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.25" with checksum 7635674380ffa1f9549ec8a6cc560766
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.26        2019-10-02 16:09:29.156824047 +0000
+@@ -105,7 +105,7 @@
+                }
+
+                data.Form.Mail = ""
+-               data.Form.Password = ""
++               _ = data.Form.Password
+                data.Form.Message = ""
+        }
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.26" with checksum eb441382c06b371123a13d0aebd57172
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.27        2019-10-02 16:09:29.336824409 +0000
+@@ -106,7 +106,7 @@
+
+                data.Form.Mail = ""
+                data.Form.Password = ""
+-               data.Form.Message = ""
++               _ = data.Form.Message
+        }
+
+        var err error
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.27" with checksum 196cafa4300347df9056df6bdf29657d
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.28        2019-10-02 16:09:29.504824748 +0000
+@@ -99,7 +99,7 @@
+        if data.Form.MailError == "" && data.Form.PasswordError == "" && data.Form.MessageError == "" {
+                err := model.CommentAdd(db, data.Form.Mail, data.Form.Message)
+                if err != nil {
+-                       http.Error(w, err.Error(), http.StatusInternalServerError)
++                       _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+                        return
+                }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.28" with checksum e0ec290589ca752b6edbb22f0745639f
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go       2019-10-02 15:59:42.619636275 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.29        2019-10-02 16:09:29.676825095 +0000
+@@ -112,7 +112,7 @@
+        var err error
+        data.Comments, err = model.CommentAll(db)
+        if err != nil {
+-               http.Error(w, err.Error(), http.StatusInternalServerError)
++               _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+                return
+        }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/index.go.29" with checksum f6b8867a88283604225bb6852666b742
+Mutate "/go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go"
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.0      2019-10-02 16:09:31.024827809 +0000
+@@ -64,7 +64,7 @@
+        data.Form.Password = r.FormValue("password")
+
+        if data.Form.Mail == "" {
+-               data.Form.MailError = "This is a required field."
++               _ = data.Form.MailError
+        } else if !strings.Contains(data.Form.Mail, "@") {
+                data.Form.MailError = "Not a valid mail address."
+        } else if user, err := model.UserByMail(db, data.Form.Mail); err != nil {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.0" with checksum 49753ad5bc1a88550b09de8eda6e0a71
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.1      2019-10-02 16:09:31.188828139 +0000
+@@ -66,7 +66,7 @@
+        if data.Form.Mail == "" {
+                data.Form.MailError = "This is a required field."
+        } else if !strings.Contains(data.Form.Mail, "@") {
+-               data.Form.MailError = "Not a valid mail address."
++               _ = data.Form.MailError
+        } else if user, err := model.UserByMail(db, data.Form.Mail); err != nil {
+                http.Error(w, err.Error(), http.StatusInternalServerError)
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.1" with checksum 0d2b7170136231bc796f02bfe399fea1
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.2      2019-10-02 16:09:31.360828486 +0000
+@@ -68,9 +68,8 @@
+        } else if !strings.Contains(data.Form.Mail, "@") {
+                data.Form.MailError = "Not a valid mail address."
+        } else if user, err := model.UserByMail(db, data.Form.Mail); err != nil {
+-               http.Error(w, err.Error(), http.StatusInternalServerError)
++               _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+-               return
+        } else if user != nil {
+                data.Form.MailError = "The mail address " + data.Form.Mail + " does already exist."
+        }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.2" with checksum 4d6ad0e2952b285f7524559a4897f101
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.3      2019-10-02 16:09:31.524828817 +0000
+@@ -72,7 +72,7 @@
+
+                return
+        } else if user != nil {
+-               data.Form.MailError = "The mail address " + data.Form.Mail + " does already exist."
++               _, _ = data.Form.MailError, data.Form.Mail
+        }
+
+        if data.Form.Password == "" {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.3" with checksum 78419dc753b2df9d5de893108163286e
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.4      2019-10-02 16:09:31.696829163 +0000
+@@ -76,7 +76,7 @@
+        }
+
+        if data.Form.Password == "" {
+-               data.Form.PasswordError = "This is a required field."
++               _ = data.Form.PasswordError
+        }
+
+        if data.Form.MailError == "" && data.Form.PasswordError == "" {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.4" with checksum 172bdd15a20bc4c6d75ce2ff8fcc17e4
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+Mutation did not compile
+SKIP "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.5" with checksum 8f02294242ba4ce219636a9f7d476af5
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.6      2019-10-02 16:09:32.012829799 +0000
+@@ -82,9 +82,8 @@
+        if data.Form.MailError == "" && data.Form.PasswordError == "" {
+                err := model.UserAdd(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+-                       http.Error(w, err.Error(), http.StatusInternalServerError)
++                       _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+-                       return
+                }
+
+                data.Registered = true
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.6" with checksum f89f4b10c71a4354a86db0988c6c28d5
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.7      2019-10-02 16:09:32.176830129 +0000
+@@ -93,6 +93,7 @@
+        w.WriteHeader(http.StatusOK)
+        err := templateRegister.Execute(w, data)
+        if err != nil {
+-               panic(err) // If we cannot render the template, the server is unusable.
++               _ = err
++               // If we cannot render the template, the server is unusable.
+        }
+ }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.7" with checksum 1e821740d6c45c0b48a6bf072f4cdbe5
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.8      2019-10-02 16:09:32.352830484 +0000
+@@ -79,7 +79,7 @@
+                data.Form.PasswordError = "This is a required field."
+        }
+
+-       if data.Form.MailError == "" && data.Form.PasswordError == "" {
++       if true && data.Form.PasswordError == "" {
+                err := model.UserAdd(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusInternalServerError)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.8" with checksum e390340e37b14e08c8b796738ee4fc85
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.9      2019-10-02 16:09:32.528830838 +0000
+@@ -79,7 +79,7 @@
+                data.Form.PasswordError = "This is a required field."
+        }
+
+-       if data.Form.MailError == "" && data.Form.PasswordError == "" {
++       if data.Form.MailError == "" && true {
+                err := model.UserAdd(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+                        http.Error(w, err.Error(), http.StatusInternalServerError)
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.9" with checksum e533e9204d5b02d502ae4275e56494bf
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.10" with checksum df116134468fa21cc757412742e7d43b
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.11" with checksum e439b52fa63ba355e7ddd2ab2889c91d
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.12     2019-10-02 16:09:35.912837650 +0000
+@@ -89,8 +89,7 @@
+
+                data.Registered = true
+        }
+-
+-       w.WriteHeader(http.StatusOK)
++       _, _ = w.WriteHeader, http.StatusOK
+        err := templateRegister.Execute(w, data)
+        if err != nil {
+                panic(err) // If we cannot render the template, the server is unusable.
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.12" with checksum 607f9165f072fdac779b690028225c33
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.15     2019-10-02 16:09:36.108838045 +0000
+@@ -68,7 +68,7 @@
+        } else if !strings.Contains(data.Form.Mail, "@") {
+                data.Form.MailError = "Not a valid mail address."
+        } else if user, err := model.UserByMail(db, data.Form.Mail); err != nil {
+-               http.Error(w, err.Error(), http.StatusInternalServerError)
++               _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+                return
+        } else if user != nil {
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.15" with checksum 51c325248de675574e2b33f0765614d9
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.18" with checksum e08345615f0304481b8b276269349eab
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go    2019-10-02 10:27:32.406208508 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.19     2019-10-02 16:09:37.884841621 +0000
+@@ -82,7 +82,7 @@
+        if data.Form.MailError == "" && data.Form.PasswordError == "" {
+                err := model.UserAdd(db, data.Form.Mail, data.Form.Password)
+                if err != nil {
+-                       http.Error(w, err.Error(), http.StatusInternalServerError)
++                       _, _, _, _ = http.Error, w, err.Error, http.StatusInternalServerError
+
+                        return
+                }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/controller/register.go.19" with checksum 0d383f300f0330ecaaa7385573385f7e
+Mutate "/go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go"
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go  2019-10-02 14:57:03.347777311 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.0    2019-10-02 16:09:38.492842845 +0000
+@@ -30,7 +30,8 @@
+ func CommentAll(db *sql.DB) ([]*Comment, error) {
+        rows, err := db.Query("SELECT mail, created, message FROM comments ORDER BY created DESC")
+        if err != nil {
+-               return nil, err
++               _ = err
++
+        }
+        defer rows.Close()
+
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.0" with checksum da3bb9fc385e4c179a923cf25c1cb433
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go  2019-10-02 14:57:03.347777311 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.1    2019-10-02 16:09:38.660843184 +0000
+@@ -39,7 +39,8 @@
+                var comment Comment
+                err := rows.Scan(&comment.Mail, &comment.Created, &comment.Message)
+                if err != nil {
+-                       return nil, err
++                       _ = err
++
+                }
+                comments = append(comments, &comment)
+        }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.1" with checksum 0ffd743e7f675f2367b761dc4b856770
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go  2019-10-02 14:57:03.347777311 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.2    2019-10-02 16:09:38.836843538 +0000
+@@ -46,7 +46,8 @@
+
+        err = rows.Err()
+        if err != nil {
+-               return nil, err
++               _ = err
++
+        }
+
+        return comments, nil
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.2" with checksum a76c28f78819322973d0b6e8fc06eaad
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go  2019-10-02 14:57:03.347777311 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.3    2019-10-02 16:09:39.004843877 +0000
+@@ -43,8 +43,7 @@
+                }
+                comments = append(comments, &comment)
+        }
+-
+-       err = rows.Err()
++       _, _ = err, rows.Err
+        if err != nil {
+                return nil, err
+        }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.3" with checksum 38313988f367946f035de6e4a8aa9cf0
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/comment.go.4" with checksum d5cc08ec3bdcb3403f7c08b8b89a0934
+Mutate "/go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go"
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+PASS "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.0" with checksum 2c905305b22c3930522de698d19b26a9
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go     2019-10-02 10:04:26.850608246 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.1       2019-10-02 16:09:42.852851627 +0000
+@@ -24,7 +24,8 @@
+        if err == sql.ErrNoRows {
+                return nil, nil
+        } else if err != nil {
+-               return nil, err
++               _ = err
++
+        }
+
+        return &user, nil
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.1" with checksum d82bc4c1ab04143a269753b3caea8ccc
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go     2019-10-02 10:04:26.850608246 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.2       2019-10-02 16:09:43.052852029 +0000
+@@ -41,7 +41,7 @@
+ func UserLogin(db *sql.DB, mail string, password string) (bool, error) {
+        err := db.QueryRow("SELECT mail FROM users WHERE mail = '" + mail + "' AND password = '" + password + "'").Scan(&mail)
+        if err == sql.ErrNoRows {
+-               return false, nil
++
+        } else if err != nil {
+                return false, err
+        }
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.2" with checksum 29571614b535df9cca4897f9b88a9c67
+/go/src/github.com/symflower/sessions/2019/socrates-linz
+--- /go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go     2019-10-02 10:04:26.850608246 +0000
++++ /tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.3       2019-10-02 16:09:43.232852392 +0000
+@@ -43,7 +43,8 @@
+        if err == sql.ErrNoRows {
+                return false, nil
+        } else if err != nil {
+-               return false, err
++               _ = err
++
+        }
+
+        return true, nil
+FAIL "/tmp/go-mutesting-145288687//go/src/github.com/symflower/sessions/2019/socrates-linz/comments/model/user.go.3" with checksum 470e25b620512381b50f5a4d2f3250bd
+The mutation score is 0.203125 (13 passed, 47 failed, 14 duplicated, 4 skipped, total is 64)
