@@ -1,6 +1,6 @@
 # Let’s Tackle Software Testing (by Symflower)
 
-The presentation for this repository/workshop can be found in [Symflower - Let's Tackle Software Testing at Socrates 2019.pdf](Symflower - Let's Tackle Software Testing at Socrates 2019.pdf). Please take a look for the introduction and additional details to the examples below and the repository in general.
+The presentation for this repository/workshop can be found in [Symflower - Let's Tackle Software Testing at Socrates 2019.pdf](Symflower%20-%20Let%27s%20Tackle%20Software%20Testing%20at%20Socrates%202019.pdf). Please take a look for the introduction and additional details to the examples below and the repository in general.
 
 # VERY IMPORTANT
 
