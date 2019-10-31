@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    service: app
+spec:
+  # replicas: 5
+  selector:
+    matchLabels:
+      service: app
+  template:
+    metadata:
+      labels:
+        service: app
+    spec:
+      containers:
+      - name: service
+        image: symflower/itexperts:app-db
+        ports:
+        - name: http
+          containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: env-database
