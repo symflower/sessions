@@ -1,0 +1,6 @@
+.kubectl-completion
+.vscode
+bin
+go
+pkg
+src/github.com
