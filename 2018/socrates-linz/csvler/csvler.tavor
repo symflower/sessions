@@ -1,0 +1,4 @@
+Header = [a-z] +0,$cc.Value(",a") "\n"
+Body = +([1-9] +0,$cc.Value(",1") "\n")
+
+START = [0-5]<=cc> Header Body
