@@ -13,4 +13,4 @@ This talk was held in April 2022 at Johannes Keppler University for the "Debuggi
 
 ## Installing Symflower
 
-To install [Symflower](https://symflower.com) head to [get.symflower.com](https//get.symflower.com).
+To install [Symflower](https://symflower.com) head to [get.symflower.com](https://get.symflower.com).
