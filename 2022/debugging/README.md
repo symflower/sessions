@@ -1,8 +1,8 @@
-# Debugging with [Symflower](https://symflower.com)
+# Debugging with [Symflower](https://get.symflower.com)
 
-This talk was held in April 2022 at Johannes Keppler University for the "Debugging" lecture by Prof. Dr. Seidl.
+This talk and workshop was held in April 2022 at Johannes Keppler University for the "Debugging" lecture by Prof. Dr. Seidl.
 
-> This Gist contains the slides and Java / Golang source code for the [Symflower](https://symflower.com) debugging workshop.
+This directory holds the slides which can be [downloaded from here](slides.pdf) and the [Java](Hashing.java) / [Go](hashing.go) source code for the workshop.
 
 ## Detailed Information about Symbolic Exectuion
 
@@ -13,4 +13,4 @@ This talk was held in April 2022 at Johannes Keppler University for the "Debuggi
 
 ## Installing Symflower
 
-To install [Symflower](https://symflower.com) head to [get.symflower.com](https://get.symflower.com).
+To install [Symflower](https://get.symflower.com) head to [https://get.symflower.com](https://get.symflower.com).
