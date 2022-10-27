@@ -1,0 +1,5 @@
+# Rethinking Unit Testing: Automating the Generation of Java Unit Tests
+
+In an ideal world, any code we write would be tested in real time, letting us catch bugs on the fly to write 100% correct code. Automated test cases can help us move closer to this ideal, keeping code behavior stable and implementations regression-free. Test-driven development is a step ahead, allowing us to write better code and extend test suites one behavior at a time. However, all those test cases still need to be written manually, a painful time-consuming process that leaves plenty of room for error. Manually written tests often tend to be flawed, focusing on the happy path and overlooking corner cases and bugs. In this talk, Markus Zimmermann argues for a new way to dramatically improve unit testing. By generating unit tests based on the current implementation automatically rather than manually, we can improve productivity and catch bugs on the fly, while code is being written.
+
+You can find the slides of the talk in [2022 - GeeCON Prag - Symflower - Rethinking Unit Testing.pdf](2022%20-%20GeeCON%20Prag%20-%20Symflower%20-%20Rethinking%20Unit%20Testing.pdf).
